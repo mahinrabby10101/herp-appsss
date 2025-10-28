@@ -26,7 +26,6 @@ export default function AllApps({ apps }) {
 
     return filtered;
   }, [apps, query, sort]);
-console.log(filteredApps)
   return (
     <main className="max-w-6xl mx-auto px-4 py-8">
       <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
