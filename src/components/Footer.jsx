@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="bg-gray-900 text-gray-200 mt-12">
       <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
         
-        {/* Brand Section */}
+       
         <div>
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-10  flex items-center justify-center ">
@@ -17,7 +17,7 @@ export default function Footer() {
           <div className="text-sm text-gray-500">© {new Date().getFullYear()} HERO.IO. All rights reserved.</div>
         </div>
 
-        {/* Products Section */}
+       
         <div>
           <div className="font-semibold mb-2">Products</div>
           <ul className="space-y-1 text-sm text-gray-400">
@@ -28,7 +28,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Resources Section */}
+     
         <div>
           <div className="font-semibold mb-2">Resources</div>
           <ul className="space-y-1 text-sm text-gray-400">
@@ -39,7 +39,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Social Section */}
+       
         <div>
           <div className="font-semibold mb-2">Social</div>
           <div className="flex gap-3 text-sm text-gray-400">

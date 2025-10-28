@@ -1,4 +1,4 @@
-// src/pages/AppDetails.jsx
+
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip } from "recharts";
@@ -37,7 +37,7 @@ export default function AppDetails({ apps, onInstall, installedIds }) {
     setInstalled(true);
   };
 
-  // Safe chartData: fallback if ratings missing
+ 
   const chartData =
     app.ratings && app.ratings.length > 0
       ? app.ratings.map((r) => ({
@@ -55,12 +55,12 @@ export default function AppDetails({ apps, onInstall, installedIds }) {
   return (
     <main className="max-w-6xl mx-auto px-4 py-8">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Image */}
+      
         <div className="md:col-span-1">
           <img src={app.image} alt={app.title} className="w-full rounded" />
         </div>
 
-        {/* Details */}
+       
         <div className="md:col-span-2">
           <h2 className="text-2xl font-semibold">{app.title}</h2>
           <div className="text-gray-600 mt-1">
@@ -68,8 +68,7 @@ export default function AppDetails({ apps, onInstall, installedIds }) {
             {app.downloads?.toLocaleString() || 0} downloads
           </div>
 
-          {/* Install button */}
-          {/* Install button with size */}
+         
 <div className="mt-4">
   <button
     onClick={handleInstall}
@@ -85,7 +84,7 @@ export default function AppDetails({ apps, onInstall, installedIds }) {
 </div>
 
 
-          {/* Ratings Chart */}
+        
           <div className="mt-8" style={{ width: "100%", height: 300 }}>
             {chartData.length > 0 ? (
               <ResponsiveContainer width="100%" height="100%">
@@ -105,7 +104,7 @@ export default function AppDetails({ apps, onInstall, installedIds }) {
             )}
           </div>
 
-          {/* Description */}
+       
           <div className="mt-6">
             <h3 className="font-semibold">Description</h3>
             <p className="text-gray-600 mt-2">{app.description || "No description available."}</p>

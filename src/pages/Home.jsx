@@ -1,4 +1,4 @@
-// src/pages/Home.jsx
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaGooglePlay, FaAppStoreIos } from "react-icons/fa";
@@ -9,7 +9,7 @@ export default function Home({ apps }) {
   return (
     <main className="flex-1">
 
-      {/* Banner Section */}
+    
       <div className="max-w-6xl mx-auto px-4 pt-20 pb-10 text-center">
         <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900">
           We Build <span className="text-purple-600">Productive</span> Apps
@@ -20,7 +20,7 @@ export default function Home({ apps }) {
           Our goal is to turn your ideas into digital experiences that truly make an impact.
         </p>
 
-        {/* App store buttons */}
+       
         <div className="flex justify-center gap-3 mt-6">
           <a
             href="https://play.google.com/store/apps/details?id=YOUR_APP_ID"
@@ -42,7 +42,7 @@ export default function Home({ apps }) {
         </div>
       </div>
 
-      {/* Hero / Phone Image */}
+     
       <div className="relative flex justify-center mt-10 mb-0">
         <img
           src="/hero.png"
@@ -51,7 +51,7 @@ export default function Home({ apps }) {
         />
       </div>
 
-      {/* Stats Section - Full Width Gradient */}
+     
       <div className="w-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-10">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-semibold mb-6">
@@ -78,7 +78,7 @@ export default function Home({ apps }) {
         </div>
       </div>
 
-      {/* Top Apps Section */}
+      
       <section className="max-w-6xl mx-auto px-4 mt-12">
         <div className="text-center mb-6">
           <h2 className="text-2xl font-bold mb-2">Trending Apps</h2>
@@ -111,7 +111,7 @@ export default function Home({ apps }) {
           ))}
         </div>
 
-        {/* Show All Button */}
+       
         <div className="flex justify-center mt-10 mb-10">
           <Link
             to="/apps"

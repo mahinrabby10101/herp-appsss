@@ -1,4 +1,4 @@
-// src/data/appsData.js
+
 
 const APPS = [
   {

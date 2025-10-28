@@ -1,4 +1,4 @@
-// src/components/ToastMsg.jsx
+
 import React from "react";
 
 export default function ToastMsg({ toast }) {

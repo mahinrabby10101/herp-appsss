@@ -4,7 +4,7 @@ export default function AppHeader() {
   return (
     <header className="bg-blue-200 shadow-sm sticky top-0 z-40">
       <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-        {/* Logo on the left */}
+    
         <Link to="/" className="flex items-center gap-3">
           <div className="w-16 h-12 flex items-center justify-center overflow-hidden">
             <img
@@ -16,7 +16,7 @@ export default function AppHeader() {
           <span className="font-semibold">HERO.IO</span>
         </Link>
 
-        {/* Navigation links in the center */}
+      
         <nav className="flex-1 flex justify-center items-center gap-4">
           <NavLink
             to="/"
@@ -45,7 +45,7 @@ export default function AppHeader() {
           </NavLink>
         </nav>
 
-        {/* Contribute button on the right */}
+    
         <a
           href="https://github.com/mahinrabby10101"
           target="_blank"

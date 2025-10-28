@@ -1,4 +1,4 @@
-// src/pages/AllApps.jsx
+
 import React, { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -7,7 +7,7 @@ export default function AllApps({ apps }) {
   const [sort, setSort] = useState("none");
   const [loading, setLoading] = useState(false);
 
-  // Simulate typing loading
+
   useEffect(() => {
     if (query.length > 0) {
       setLoading(true);
@@ -63,7 +63,7 @@ export default function AllApps({ apps }) {
               className="bg-white rounded shadow hover:shadow-lg overflow-hidden transition"
             >
               <img
-                src={app.image} // fallback
+                src={app.image}
                 alt={app.title}
                 className="w-full h-40 object-cover"
               />

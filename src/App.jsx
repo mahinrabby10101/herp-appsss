@@ -32,7 +32,7 @@ export default function App() {
     setTimeout(() => setToast(null), 2000);
   };
 
-  // ✅ Pass everything into your router builder
+ 
   const router = createAppRouter({
     handleInstall,
     handleUninstall,

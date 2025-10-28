@@ -17,7 +17,7 @@ export default function RootLayout({
       <Header />
       <Loader show={false} />
 
-      {/* Where pages render */}
+     
       <Outlet
         context={{
           handleInstall,
