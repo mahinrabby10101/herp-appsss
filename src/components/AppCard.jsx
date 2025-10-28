@@ -1,13 +1,138 @@
-import { Link } from "react-router-dom";
+// src/data/appsData.js
 
-export default function AppCard({ app }) {
-  return (
-    <Link to={`/apps/${app.id}`} className="block bg-white rounded-lg shadow p-4 hover:shadow-md transition">
-      <img src={app.image} alt={app.title} className="w-full h-40 object-cover rounded" />
-      <div className="mt-3">
-        <div className="font-semibold">{app.title}</div>
-        <div className="text-sm text-slate-500">{Math.round(app.downloads/1000)}K downloads • {app.ratingAvg}⭐</div>
-      </div>
-    </Link>
-  );
-}
+const APPS = [
+  {
+    id: 1,
+    image: "https://www.freepik.com/free-photo/smartphone-icon-front-side-with-white-background_42312294.htm#fromView=search&page=1&position=9&uuid=f55727b5-a573-47bf-a661-ee2db85ebc1f&query=single+app+icons",
+    title: "Forest: Focus For Productivity",
+    companyName: "GreenLabs",
+    description: "A cute pomodoro timer that grows a tree while you focus.",
+    size: 45,
+    reviews: 12000,
+    ratingAvg: 4.9,
+    downloads: 9000000,
+  },
+  {
+    id: 2,
+    image: "https://images.unsplash.com/photo-1657032633395-1cb34612f86d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
+    title: "SmPlan: ToDo List With Reminder",
+    companyName: "Taskly",
+    description: "Simple todo and reminder with smart suggestions.",
+    size: 22,
+    reviews: 5400,
+    ratingAvg: 4.7,
+    downloads: 8000000,
+  },
+  {
+    id: 3,
+    image: "https://via.placeholder.com/400x300/20c997/ffffff?text=FLIP",
+    title: "FLIP - Focus Timer For Study",
+    companyName: "FocusWorks",
+    description: "A minimal focus timer built for students.",
+    size: 18,
+    reviews: 3200,
+    ratingAvg: 4.6,
+    downloads: 7200000,
+  },
+  {
+    id: 4,
+    image: "https://via.placeholder.com/400x300/ff6b6b/ffffff?text=Pomocat",
+    title: "Pomocat - Cute Pomodoro Timer",
+    companyName: "CuteApps",
+    description: "Pomodoro with a calming cat animation.",
+    size: 30,
+    reviews: 4200,
+    ratingAvg: 4.8,
+    downloads: 6500000,
+  },
+  {
+    id: 5,
+    image: "https://via.placeholder.com/400x300/f39c12/ffffff?text=Time+Planner",
+    title: "Time Planner: Schedule & Tasks",
+    companyName: "PlanIt",
+    description: "Powerful planner for weekly and daily schedules.",
+    size: 60,
+    reviews: 2100,
+    ratingAvg: 4.5,
+    downloads: 5500000,
+  },
+  {
+    id: 6,
+    image: "https://via.placeholder.com/400x300/10ac84/ffffff?text=Morning+Habits",
+    title: "Morning Habits - Daily Routine",
+    companyName: "RoutinesCo",
+    description: "Track and build morning habits with streaks.",
+    size: 26,
+    reviews: 1800,
+    ratingAvg: 4.4,
+    downloads: 4900000,
+  },
+  {
+    id: 7,
+    image: "https://via.placeholder.com/400x300/5352ed/ffffff?text=Focus+Plant",
+    title: "Focus Plant: Pomodoro Forest",
+    companyName: "GreenLabs",
+    description: "Another take on focus with plant growth visuals.",
+    size: 27,
+    reviews: 2300,
+    ratingAvg: 4.6,
+    downloads: 4300000,
+  },
+  {
+    id: 8,
+    image: "https://upload.wikimedia.org/wikipedia/en/2/2e/Alarmy_app_icon.png",
+    title: "Alarmy - Alarm Clock & Sleep",
+    companyName: "WakeUp",
+    description: "Smart alarm with math puzzle dismiss.",
+    size: 35,
+    reviews: 4100,
+    ratingAvg: 4.3,
+    downloads: 3800000,
+  },
+  {
+    id: 9,
+    image: "https://via.placeholder.com/400x300/ffa502/ffffff?text=Notes+Master",
+    title: "Notes Master",
+    companyName: "NoteCorp",
+    description: "Quick notes with markdown support.",
+    size: 12,
+    reviews: 900,
+    ratingAvg: 4.1,
+    downloads: 1200000,
+  },
+  {
+    id: 10,
+    image: "https://via.placeholder.com/400x300/1e90ff/ffffff?text=Habit+Buddy",
+    title: "Habit Buddy",
+    companyName: "BuddyInc",
+    description: "Habit tracker with friendly notifications.",
+    size: 20,
+    reviews: 700,
+    ratingAvg: 4.0,
+    downloads: 1000000,
+  },
+  {
+    id: 11,
+    image: "https://via.placeholder.com/400x300/9b59b6/ffffff?text=Study+Flow",
+    title: "Study Flow",
+    companyName: "Learnly",
+    description: "Focus sessions tuned for learners.",
+    size: 16,
+    reviews: 510,
+    ratingAvg: 4.2,
+    downloads: 870000,
+  },
+  {
+    id: 12,
+    image: "https://via.placeholder.com/400x300/2ed573/ffffff?text=Tiny+Focus",
+    title: "Tiny Focus",
+    companyName: "MicroApps",
+    description: "Minimal focused sessions and tiny reminders.",
+    size: 8,
+    reviews: 320,
+    ratingAvg: 3.9,
+    downloads: 560000,
+  },
+];
+
+export default APPS;

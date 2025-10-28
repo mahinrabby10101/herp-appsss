@@ -26,7 +26,7 @@ export default function AllApps({ apps }) {
 
     return filtered;
   }, [apps, query, sort]);
-
+console.log(filteredApps)
   return (
     <main className="max-w-6xl mx-auto px-4 py-8">
       <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
@@ -64,7 +64,7 @@ export default function AllApps({ apps }) {
               className="bg-white rounded shadow hover:shadow-lg overflow-hidden transition"
             >
               <img
-                src={app.image || `https://picsum.photos/400/300?random=${app.id}`} // fallback
+                src={app.image} // fallback
                 alt={app.title}
                 className="w-full h-40 object-cover"
               />

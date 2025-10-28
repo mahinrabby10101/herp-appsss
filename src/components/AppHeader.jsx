@@ -8,7 +8,7 @@ export default function AppHeader() {
         <Link to="/" className="flex items-center gap-3">
           <div className="w-16 h-12 flex items-center justify-center overflow-hidden">
             <img
-              src="../../public/logo.png"
+              src="/logo.png"
               alt="logo"
               className="max-w-[70%] max-h-[70%] object-contain"
             />

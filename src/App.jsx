@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 // Components
 import Header from "./components/AppHeader";
@@ -15,14 +15,42 @@ import MyInstallation from "./pages/MyInstallation";
 import ErrorPage from "./pages/ErrorPage";
 import APPS from "./data/appsData";
 
-
 // Utils
 import useLocalStorage from "./utils/useLocalStorage";
 
+// ------------------ Layout Component ------------------
+function RootLayout({
+  handleInstall,
+  handleUninstall,
+  installedIds,
+  installedData,
+  toast,
+}) {
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <Loader show={false} />
 
+      {/* The Outlet is where child routes render */}
+      <Outlet
+        context={{
+          handleInstall,
+          handleUninstall,
+          installedIds,
+          installedData,
+        }}
+      />
 
+      <div style={{ height: 40 }} />
+      <Footer />
+
+      {toast && <ToastMsg toast={toast} />}
+    </div>
+  );
+}
+
+// ------------------ Main App Component ------------------
 export default function App() {
-  // LocalStorage hooks
   const [installedIds, setInstalledIds] = useLocalStorage("hero_installed_ids", []);
   const [installedData, setInstalledData] = useLocalStorage("hero_installed_data", []);
   const [toast, setToast] = useState(null);
@@ -47,48 +75,51 @@ export default function App() {
 
   // Uninstall app
   const handleUninstall = (id) => {
-    setInstalledIds(installedIds.filter(i => i !== id));
-    setInstalledData(installedData.filter(d => d.id !== id));
+    setInstalledIds(installedIds.filter((i) => i !== id));
+    setInstalledData(installedData.filter((d) => d.id !== id));
     setToast({ type: "success", text: `App uninstalled` });
     setTimeout(() => setToast(null), 2000);
   };
 
-  return (
-    <Router>
-      <div className="min-h-screen flex flex-col">
-        <Header />
-        <Loader show={false} />
+  // ------------------ Data Router Definition ------------------
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <RootLayout
+          handleInstall={handleInstall}
+          handleUninstall={handleUninstall}
+          installedIds={installedIds}
+          installedData={installedData}
+          toast={toast}
+        />
+      ),
+      errorElement: <ErrorPage />,
+      children: [
+        { index: true, element: <Home apps={APPS} /> },
+        { path: "apps", element: <AllApps apps={APPS} /> },
+        {
+          path: "apps/:id",
+          element: (
+            <AppDetails
+              apps={APPS}
+              onInstall={handleInstall}
+              installedIds={installedIds}
+            />
+          ),
+        },
+        {
+          path: "installation",
+          element: (
+            <MyInstallation
+              installedApps={installedData}
+              onUninstall={handleUninstall}
+            />
+          ),
+        },
+      ],
+    },
+  ]);
 
-        <Routes>
-          <Route path="/" element={<Home apps={APPS} />} />
-          <Route path="/apps" element={<AllApps apps={APPS} />} />
-          <Route
-            path="/apps/:id"
-            element={
-              <AppDetails
-                apps={APPS}
-                onInstall={handleInstall}
-                installedIds={installedIds}
-              />
-            }
-          />
-          <Route
-            path="/installation"
-            element={
-              <MyInstallation
-                installedApps={installedData}
-                onUninstall={handleUninstall}
-              />
-            }
-          />
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
-
-        <div style={{ height: 40 }} />
-        <Footer />
-
-        {toast && <ToastMsg toast={toast} />}
-      </div>
-    </Router>
-  );
+  return <RouterProvider router={router} />;
 }
