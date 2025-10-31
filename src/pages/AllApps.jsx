@@ -7,6 +7,11 @@ export default function AllApps({ apps }) {
   const [sort, setSort] = useState("none");
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+  
+
 
   useEffect(() => {
     if (query.length > 0) {

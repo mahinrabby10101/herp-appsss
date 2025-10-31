@@ -53,64 +53,99 @@ export default function AppDetails({ apps, onInstall, installedIds }) {
         ];
 
   return (
-    <main className="max-w-6xl mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      
-        <div className="md:col-span-1">
-          <img src={app.image} alt={app.title} className="w-full rounded" />
+    <main className="w-full px-4 py-8">
+    {/* App Image */}
+    <div className="flex flex-col md:flex-row items-start bg-white p-6 rounded-lg shadow-md w-full mb-6">
+  {/* App Image */}
+  <div className="w-full md:w-1/4 flex-shrink-0 mb-4 md:mb-0">
+    <img
+      src={app.image}
+      alt={app.title}
+      className="w-full h-auto rounded-lg object-cover"
+    />
+  </div>
+
+  {/* Right Side Info */}
+  <div className="w-full md:w-3/4 md:pl-6">
+    {/* Title and Company */}
+    <h2 className="text-2xl font-semibold">{app.title}</h2>
+    <p className="text-gray-500 mt-1">
+      Developed by{" "}
+      <span className="text-indigo-600 font-medium">{app.companyName}</span>
+    </p>
+
+    {/* Stats Row */}
+    <div className="flex gap-8 mt-6 text-center">
+      <div>
+        <p className="text-sm text-gray-500">Downloads</p>
+        <p className="text-xl font-semibold">{app.downloads?.toLocaleString() || "0"}</p>
+      </div>
+      <div>
+        <p className="text-sm text-gray-500">Average Rating</p>
+        <p className="text-xl font-semibold">{app.ratingAvg || "0.0"}</p>
+      </div>
+      <div>
+        <p className="text-sm text-gray-500">Total Reviews</p>
+        <p className="text-xl font-semibold">{app.reviews?.toLocaleString() || "0"}</p>
+      </div>
+    </div>
+
+    {/* Install Button */}
+    <div className="mt-6">
+      {installed ? (
+        <div className="flex gap-3">
+          <button
+            disabled
+            className="px-4 py-2 rounded bg-purple-300 text-white w-full md:w-auto"
+          >
+            Installed
+          </button>
+          <button
+            onClick={() => setInstalled(false)}
+            className="px-4 py-2 rounded bg-green-600 text-white w-full md:w-auto"
+          >
+            Disable
+          </button>
         </div>
-
-       
-        <div className="md:col-span-2">
-          <h2 className="text-2xl font-semibold">{app.title}</h2>
-          <div className="text-gray-600 mt-1">
-            {app.companyName} • {app.reviews?.toLocaleString() || 0} reviews •{" "}
-            {app.downloads?.toLocaleString() || 0} downloads
-          </div>
-
-         
-<div className="mt-4">
-  <button
-    onClick={handleInstall}
-    disabled={installed}
-    className={`px-4 py-2 rounded ${
-      installed ? "bg-gray-300" : "bg-purple-600 text-white"
-    }`}
-  >
-    {installed
-      ? "Installed"
-      : `Install${app.size ? ` (${app.size} MB)` : ""}`}
-  </button>
+      ) : (
+        <button
+          onClick={handleInstall}
+          className="px-6 py-2 rounded bg-green-600 text-white font-medium w-full md:w-auto"
+        >
+          Install Now {app.size ? `(${app.size} MB)` : ""}
+        </button>
+      )}
+    </div>
+  </div>
 </div>
 
-
-        
-          <div className="mt-8" style={{ width: "100%", height: 300 }}>
-            {chartData.length > 0 ? (
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                  data={chartData}
-                  layout="vertical"
-                  margin={{ top: 5, right: 20, left: 40, bottom: 5 }}
-                >
-                  <XAxis type="number" />
-                  <YAxis type="category" dataKey="name" />
-                  <Tooltip />
-                  <Bar dataKey="value" fill="#7c3aed" />
-                </BarChart>
-              </ResponsiveContainer>
-            ) : (
-              <p className="text-gray-500">No ratings available</p>
-            )}
-          </div>
-
-       
-          <div className="mt-6">
-            <h3 className="font-semibold">Description</h3>
-            <p className="text-gray-600 mt-2">{app.description || "No description available."}</p>
-          </div>
-        </div>
-      </div>
-    </main>
+  
+    {/* Chart Section */}
+    <div className="w-full mb-6" style={{ height: 300 }}>
+      {chartData.length > 0 ? (
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart
+            data={chartData}
+            layout="vertical"
+            margin={{ top: 5, right: 20, left: 40, bottom: 5 }}
+          >
+            <XAxis type="number" />
+            <YAxis type="category" dataKey="name" />
+            <Tooltip />
+            <Bar dataKey="value" fill="#7c3aed" />
+          </BarChart>
+        </ResponsiveContainer>
+      ) : (
+        <p className="text-gray-500">No ratings available</p>
+      )}
+    </div>
+  
+    {/* Description Section */}
+    <div className="w-full">
+      <h3 className="font-semibold">Description</h3>
+      <p className="text-gray-600 mt-2">{app.description || "No description available."}</p>
+    </div>
+  </main>
+  
   );
 }
