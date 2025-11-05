@@ -81,20 +81,26 @@ export default function AppDetails({ apps, onInstall, installedIds }) {
     </p>
 
     {/* Stats Row */}
-    <div className="flex gap-8 mt-6 text-center">
-      <div>
-        <p className="text-sm text-gray-500">Downloads</p>
-        <p className="text-xl font-semibold">{app.downloads?.toLocaleString() || "0"}</p>
-      </div>
-      <div>
-        <p className="text-sm text-gray-500">Average Rating</p>
-        <p className="text-xl font-semibold">{app.ratingAvg || "0.0"}</p>
-      </div>
-      <div>
-        <p className="text-sm text-gray-500">Total Reviews</p>
-        <p className="text-xl font-semibold">{app.reviews?.toLocaleString() || "0"}</p>
-      </div>
-    </div>
+    <div className="flex flex-wrap gap-8 mt-6 text-center">
+  <div className="flex flex-col items-center">
+    <img src="/icon-downloads.png" alt="Downloads" className="w-6 h-6 mb-1" />
+    <p className="text-sm text-gray-500">Downloads</p>
+    <p className="text-xl font-semibold">{app.downloads?.toLocaleString() || "0"}</p>
+  </div>
+
+  <div className="flex flex-col items-center">
+    <img src="/icon-ratings.png" alt="Average Rating" className="w-6 h-6 mb-1" />
+    <p className="text-sm text-gray-500">Average Rating</p>
+    <p className="text-xl font-semibold">{app.ratingAvg || "0.0"}</p>
+  </div>
+
+  <div className="flex flex-col items-center">
+    <img src="/icon-review.png" alt="Total Reviews" className="w-6 h-6 mb-1" />
+    <p className="text-sm text-gray-500">Total Reviews</p>
+    <p className="text-xl font-semibold">{app.reviews?.toLocaleString() || "0"}</p>
+  </div>
+</div>
+
 
     {/* Install Button */}
     <div className="mt-6">

@@ -47,28 +47,49 @@ export default function AllApps({ apps }) {
         <div className="text-center py-8">No App Found.</div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {filteredApps.map((app) => (
-            <Link
-              key={app.id}
-              to={`/apps/${app.id}`}
-              className="bg-white rounded shadow hover:shadow-lg overflow-hidden transition"
-            >
-              <img
-                src={app.image}
-                alt={app.title}
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-4">
-                <h3 className="font-semibold text-lg mb-1">{app.title}</h3>
-                <p className="text-sm text-gray-500 mb-2">{app.companyName}</p>
-                <div className="flex justify-between items-center text-sm text-gray-600">
-                  <span>{app.downloads.toLocaleString()} downloads</span>
-                  <span>⭐ {app.ratingAvg}</span>
-                </div>
-              </div>
-            </Link>
-          ))}
+  {filteredApps.map((app) => (
+    <Link
+      key={app.id}
+      to={`/apps/${app.id}`}
+      className="bg-white rounded shadow hover:shadow-lg overflow-hidden transition"
+    >
+      <img
+        src={app.image}
+        alt={app.title}
+        className="w-full h-40 object-cover"
+      />
+
+      <div className="p-4">
+        <h3 className="font-semibold text-lg mb-1">{app.title}</h3>
+        <p className="text-sm text-gray-500 mb-2">{app.companyName}</p>
+
+        {/* Stats row */}
+        <div className="flex justify-between items-center text-sm text-gray-600">
+          {/* Downloads */}
+          <div className="flex items-center gap-1">
+            <img
+              src="/icon-downloads.png"
+              alt="Downloads"
+              className="w-4 h-4"
+            />
+            <span>{app.downloads?.toLocaleString() || "0"}</span>
+          </div>
+
+          {/* Rating */}
+          <div className="flex items-center gap-1">
+            <img
+              src="/icon-ratings.png"
+              alt="Rating"
+              className="w-4 h-4"
+            />
+            <span>{app.ratingAvg || "0.0"}</span>
+          </div>
         </div>
+      </div>
+    </Link>
+  ))}
+</div>
+
       )}
     </main>
   );
