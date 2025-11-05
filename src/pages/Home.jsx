@@ -103,9 +103,7 @@ export default function Home({ apps }) {
         <h3 className="font-semibold text-lg mb-1">{app.title}</h3>
         <p className="text-sm text-gray-500 mb-2">{app.companyName}</p>
 
-        {/* Stats row */}
         <div className="flex justify-between items-center text-sm text-gray-600">
-          {/* Downloads */}
           <div className="flex items-center gap-1">
             <img
               src="/icon-downloads.png"
@@ -115,7 +113,6 @@ export default function Home({ apps }) {
             <span>{app.downloads?.toLocaleString() || "0"}</span>
           </div>
 
-          {/* Rating */}
           <div className="flex items-center gap-1">
             <img
               src="/icon-ratings.png"

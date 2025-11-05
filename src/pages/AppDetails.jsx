@@ -60,9 +60,7 @@ export default function AppDetails({ apps, onInstall, installedIds }) {
 
   return (
     <main className="w-full px-4 py-8">
-    {/* App Image */}
     <div className="flex flex-col md:flex-row items-start bg-white p-6 rounded-lg shadow-md w-full mb-6">
-  {/* App Image */}
   <div className="w-full md:w-1/4 flex-shrink-0 mb-4 md:mb-0">
     <img
       src={app.image}
@@ -71,16 +69,13 @@ export default function AppDetails({ apps, onInstall, installedIds }) {
     />
   </div>
 
-  {/* Right Side Info */}
   <div className="w-full md:w-3/4 md:pl-6">
-    {/* Title and Company */}
     <h2 className="text-2xl font-semibold">{app.title}</h2>
     <p className="text-gray-500 mt-1">
       Developed by{" "}
       <span className="text-indigo-600 font-medium">{app.companyName}</span>
     </p>
 
-    {/* Stats Row */}
     <div className="flex flex-wrap gap-8 mt-6 text-center">
   <div className="flex flex-col items-center">
     <img src="/icon-downloads.png" alt="Downloads" className="w-6 h-6 mb-1" />
@@ -102,7 +97,6 @@ export default function AppDetails({ apps, onInstall, installedIds }) {
 </div>
 
 
-    {/* Install Button */}
     <div className="mt-6">
       {installed ? (
         <div className="flex gap-3">
@@ -132,8 +126,6 @@ export default function AppDetails({ apps, onInstall, installedIds }) {
 </div>
 
   
-    {/* Chart Section */}
-   {/* Chart Section */}
    <h3>Ratings</h3>
 <div className="w-full mb-6" style={{ height: 300 }}>
   {chartData.length > 0 ? (
@@ -155,7 +147,6 @@ export default function AppDetails({ apps, onInstall, installedIds }) {
 </div>
 
   
-    {/* Description Section */}
     <div className="w-full">
       <h3 className="font-semibold">Description</h3>
       <p className="text-gray-600 mt-2">{app.description || "No description available."}</p>

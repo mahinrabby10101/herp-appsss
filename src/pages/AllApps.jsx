@@ -5,12 +5,11 @@ export default function AllApps({ apps }) {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Scroll to top on mount
+ 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
-  // Simulate loading for search
   useEffect(() => {
     if (query.length > 0) {
       setLoading(true);
@@ -63,9 +62,7 @@ export default function AllApps({ apps }) {
         <h3 className="font-semibold text-lg mb-1">{app.title}</h3>
         <p className="text-sm text-gray-500 mb-2">{app.companyName}</p>
 
-        {/* Stats row */}
         <div className="flex justify-between items-center text-sm text-gray-600">
-          {/* Downloads */}
           <div className="flex items-center gap-1">
             <img
               src="/icon-downloads.png"
@@ -75,7 +72,6 @@ export default function AllApps({ apps }) {
             <span>{app.downloads?.toLocaleString() || "0"}</span>
           </div>
 
-          {/* Rating */}
           <div className="flex items-center gap-1">
             <img
               src="/icon-ratings.png"
