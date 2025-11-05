@@ -1,18 +1,16 @@
-
 import React, { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function AllApps({ apps }) {
   const [query, setQuery] = useState("");
-  const [sort, setSort] = useState("none");
   const [loading, setLoading] = useState(false);
 
+  // Scroll to top on mount
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
-  
 
-
+  // Simulate loading for search
   useEffect(() => {
     if (query.length > 0) {
       setLoading(true);
@@ -22,37 +20,25 @@ export default function AllApps({ apps }) {
   }, [query]);
 
   const filteredApps = useMemo(() => {
-    let filtered = apps.filter((app) =>
+    return apps.filter((app) =>
       app.title.toLowerCase().includes(query.trim().toLowerCase())
     );
+  }, [apps, query]);
 
-    if (sort === "high") filtered = filtered.slice().sort((a, b) => b.downloads - a.downloads);
-    else if (sort === "low") filtered = filtered.slice().sort((a, b) => a.downloads - b.downloads);
-
-    return filtered;
-  }, [apps, query, sort]);
   return (
     <main className="max-w-6xl mx-auto px-4 py-8">
       <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-        <h1 className="text-2xl font-bold">All Apps</h1>
-        <div className="flex items-center gap-3">
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search apps..."
-            className="px-3 py-2 border rounded"
-          />
-          <select
-            value={sort}
-            onChange={(e) => setSort(e.target.value)}
-            className="px-3 py-2 border rounded"
-          >
-            <option value="none">Sort</option>
-            <option value="high">Downloads High-Low</option>
-            <option value="low">Downloads Low-High</option>
-          </select>
-        </div>
+        <h1 className="text-2xl font-bold">
+          All Apps{" "}
+          <span className="text-sm text-gray-500">({apps.length} apps found)</span>
+        </h1>
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search apps..."
+          className="px-3 py-2 border rounded w-full md:w-64"
+        />
       </div>
 
       {loading ? (

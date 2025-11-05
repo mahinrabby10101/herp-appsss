@@ -12,6 +12,10 @@ export default function AppDetails({ apps, onInstall, installedIds }) {
   );
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+  
+  useEffect(() => {
     setInstalled(installedIds.includes(Number(id)));
   }, [installedIds, id]);
 
@@ -51,6 +55,8 @@ export default function AppDetails({ apps, onInstall, installedIds }) {
           { name: "2", value: 0 },
           { name: "1", value: 0 },
         ];
+
+        
 
   return (
     <main className="w-full px-4 py-8">
@@ -121,24 +127,27 @@ export default function AppDetails({ apps, onInstall, installedIds }) {
 
   
     {/* Chart Section */}
-    <div className="w-full mb-6" style={{ height: 300 }}>
-      {chartData.length > 0 ? (
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart
-            data={chartData}
-            layout="vertical"
-            margin={{ top: 5, right: 20, left: 40, bottom: 5 }}
-          >
-            <XAxis type="number" />
-            <YAxis type="category" dataKey="name" />
-            <Tooltip />
-            <Bar dataKey="value" fill="#7c3aed" />
-          </BarChart>
-        </ResponsiveContainer>
-      ) : (
-        <p className="text-gray-500">No ratings available</p>
-      )}
-    </div>
+   {/* Chart Section */}
+   <h3>Ratings</h3>
+<div className="w-full mb-6" style={{ height: 300 }}>
+  {chartData.length > 0 ? (
+    <ResponsiveContainer width="100%" height="100%">
+      <BarChart
+        data={chartData}
+        layout="vertical"
+        margin={{ top: 5, right: 20, left: 40, bottom: 5 }}
+      >
+        <XAxis type="number" />
+        <YAxis type="category" dataKey="name" reversed />
+        <Tooltip />
+        <Bar dataKey="value" fill="#7c3aed" />
+      </BarChart>
+    </ResponsiveContainer>
+  ) : (
+    <p className="text-gray-500">No ratings available</p>
+  )}
+</div>
+
   
     {/* Description Section */}
     <div className="w-full">
